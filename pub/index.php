@@ -42,7 +42,7 @@ Route::add('/upload', function() {
         Post::upload($_FILES['uploadedFile']['tmp_name'], $_POST['title'], $_POST['userId']);
     }
 
-    header("Location: http://localhost/cms/pub");
+    header("Location: http://localhost/CMS-12345467/pub");
 }, 'post');
 
 Route::add('/register', function() {
@@ -55,7 +55,7 @@ Route::add('/register', function(){
     global $twig;
     if(isset($_POST['submit'])) {
         User::register($_POST['email'], $_POST['password']);
-        header("Location: http://localhost/cms/pub");
+        header("Location: http://localhost/CMS-12345467/pub");
     }
 }, 'post');
 
@@ -70,7 +70,7 @@ Route::add('/login', function() {
     if(isset($_POST['submit'])) {
         if(User::login($_POST['email'], $_POST['password'])) {
 
-            header("Location: http://localhost/cms/pub");
+            header("Location: http://localhost/CMS-12345467/pub");
         } else {
 
             $twigData = array('pageTitle' => "Zaloguj użytkownika",
@@ -97,11 +97,11 @@ Route::add('/admin', function()  {
 Route::add('/admin/remove/([0-9]*)', function($id) {
     if(Post::remove($id)) {
 
-        header("Location: http://localhost/cms/pub/admin/");
+        header("Location: http://localhost/CMS-12345467/pub/admin/");
     } else {
         die("Nie udało się usunąć podanego obrazka");
     }
 });
 
-Route::run('/cms/pub');
+Route::run('/CMS-12345467/pub');
 ?>
